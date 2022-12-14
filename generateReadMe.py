@@ -1,30 +1,35 @@
 """
-| # | Title | Solution | Difficulty | 
-|---| ----- | -------- | ---------- |
-|1|[Salaries Differences](https://platform.stratascratch.com/coding/10308-salaries-differences?python=)| [MySQL](./salariesDifferences.sql)|Easy|
+| # | Title | SQL Solution | Python Solution | Difficulty | 
+|---| ----- | ------------ | --------------- | ---------- |
+|1|[Salaries Differences](https://platform.stratascratch.com/coding/10308-salaries-differences?python=)| [MySQL](./salariesDifferences.sql)| [Python(Pandas)](./salariesDifferences.py)|Easy|
 """
 
-print('| # | Title | Solution | Difficulty | ')
-print('|---| ----- | -------- | ---------- |')
-
-from os import listdir
-
+import os
 index = 1
 
-fileNames=[f for f in listdir('.') if f.endswith('.sql')]
 write_file=open("README.md", "w")
-write_file.write('| # | Title | Solution | Difficulty | ')
+write_file.write('| # | Title | SQL Solution | Python Solution | Difficulty | ')
 write_file.write('\n')
-write_file.write('|---| ----- | -------- | ---------- |')
+write_file.write('|---| ----- | ------------ | --------------- | ---------- |')
 write_file.write('\n')
 
-for filename in fileNames:
-    with open(filename,'r') as f:
-        
-        title = f.readline().split('--TITLE: ')[1].strip()
-        link = f.readline().split('--LINK: ')[1].strip()
-        
-        print(f'|{index}|[{title}]({link})|[MySQL](./{filename})|Easy|')
-        write_file.writelines(f'|{index}|[{title}]({link})|[MySQL](./{filename})|Easy|')        
-        write_file.write('\n')
-        index += 1
+for dir in os.listdir('.'):
+    if os.path.isdir(dir):
+        for file in os.listdir(dir):
+            if file.endswith('SQL'):
+                sql_file = file.strip()
+            elif file.endswith('.py'):
+                python_file = file.strip()
+        for file in os.listdir(dir):
+            if file.endswith('question.md'):
+                file_path = os.path.join(dir,file)
+                with open(file_path,'r') as f:
+                    title = f.readline().split('# ')[1].strip()
+                    link = f.read().split("]")[1].strip().strip('()')
+                    diffuculty = dir.split('-')[1]
+                    try:
+                        write_file.writelines(f'|{index}|[{title}]({link})|[MySQL]({dir}/{sql_file})|[Python(pandas)]({dir}/{python_file})|{diffuculty}|')        
+                        write_file.write('\n')
+                        index += 1
+                    except NameError:
+                        print("Not finished No SQL or python file")
