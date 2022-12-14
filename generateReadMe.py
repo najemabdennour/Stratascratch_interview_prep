@@ -20,16 +20,15 @@ for dir in os.listdir('.'):
                 sql_file = file.strip()
             elif file.endswith('.py'):
                 python_file = file.strip()
-        for file in os.listdir(dir):
-            if file.endswith('question.md'):
-                file_path = os.path.join(dir,file)
-                with open(file_path,'r') as f:
-                    title = f.readline().split('# ')[1].strip()
-                    link = f.read().split("]")[1].strip().strip('()')
-                    diffuculty = dir.split('-')[1]
-                    try:
-                        write_file.writelines(f'|{index}|[{title}]({link})|[MySQL]({dir}/{sql_file})|[Python(pandas)]({dir}/{python_file})|{diffuculty}|')        
-                        write_file.write('\n')
-                        index += 1
-                    except NameError:
-                        print("Not finished No SQL or python file")
+        if dir not in ["unfinished",".git"]:
+            file_path = os.path.join(dir,'question.md')
+            with open(file_path,'r') as f:
+                title = f.readline().split('# ')[1].strip()
+                link = f.read().split("]")[1].strip().strip('()')
+                diffuculty = dir.split('-')[1]
+                try:
+                    write_file.writelines(f'|{index}|[{title}]({link})|[MySQL]({dir}/{sql_file})|[Python(pandas)]({dir}/{python_file})|{diffuculty}|')        
+                    write_file.write('\n')
+                    index += 1
+                except NameError:
+                    print("Not finished No SQL or python file")
