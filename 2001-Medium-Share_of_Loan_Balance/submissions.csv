@@ -1,0 +1,7 @@
+id,balance,interest_rate,rate_type,loan_id
+1,5229.12,8.75,variable,2
+2,12727.52,11.37,fixed,4
+3,14996.58,8.25,fixed,9
+4,21149,4.75,variable,7
+5,14379,3.75,variable,5
+6,6221.12,6.75,variable,11
