@@ -8,6 +8,8 @@ import os
 index = 1
 
 write_file=open("README.md", "w")
+write_file.write('<style type="text/css">body{font-size: 10pt;}</style> ')
+write_file.write('\n')
 write_file.write('| # | ID | Title | SQL Solution | Python Solution | Difficulty | ')
 write_file.write('\n')
 write_file.write('|---|----| ----- | ------------ | --------------- | ---------- |')
