@@ -1,4 +1,4 @@
-<style type="text/css">body{font-size: 07pt;}</style> 
+<style type="text/css">body{font-size: 06pt;}</style> 
 | # | ID | Title | SQL Solution | Python Solution | Difficulty | 
 |---|----| ----- | ------------ | --------------- | ---------- |
 |1|9633|[City With Most Amenities](https://platform.stratascratch.com/coding/9633-city-with-most-amenities?code_type=1)|[MySQL](9633-Hard-City_With_Most_Amenities/City_With_Most_Amenities.SQL)|[Python(pandas)](9633-Hard-City_With_Most_Amenities/City_With_Most_Amenities.py)|Hard|
